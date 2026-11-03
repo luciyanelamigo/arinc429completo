@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}ARINC 429 · Consola{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="{{ url_for('index') }}"><span class="brand-mark">A</span><span>Bus <b>ARINC 429</b><small>Consola de envíos</small></span></a><span class="mode"><i></i> MODO SIMULACIÓN</span></header>
+  <main class="shell">
+    {% with messages = get_flashed_messages(with_categories=true) %}{% if messages %}<div class="alerts">{% for category, message in messages %}<div class="alert {{ category }}">{{ message }}</div>{% endfor %}</div>{% endif %}{% endwith %}
+    {% block content %}{% endblock %}
+    <footer>Perfil lógico de palabra solamente · Sin transmisión automática · Hardware sujeto a validación</footer>
+  </main>
+</body>
+</html>
